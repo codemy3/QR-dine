@@ -1,0 +1,18 @@
+<div class="qr-card">
+  <h3 class="qr-title">Table {{ tableNumber }}</h3>
+
+  <!-- Show QR image once generated -->
+  <img
+    *ngIf="qrDataUrl; else loading"
+    [src]="qrDataUrl"
+    alt="QR Code for Table {{ tableNumber }}"
+    class="qr-image"
+  />
+
+  <!-- Loading placeholder -->
+  <ng-template #loading>
+    <div class="qr-loading">Generating QR Code...</div>
+  </ng-template>
+
+  <button class="download-btn" (click)="downloadQR()">Download QR</button>
+</div>

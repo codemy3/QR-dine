@@ -1,0 +1,24 @@
+<div class="modal-container">
+  <div class="login-modal">
+    <h2>Admin Login</h2>
+
+    <div class="form-group">
+      <label>Username</label>
+      <input [(ngModel)]="username" placeholder="Enter username" />
+    </div>
+
+    <div class="form-group password-group">
+      <label>Password</label>
+      <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" placeholder="Enter password" />
+      <button type="button" class="toggle-btn" (click)="togglePassword()">
+        {{ showPassword ? 'Hide' : 'Show' }}
+      </button>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <button class="btn-login" (click)="login()">Login</button>
+  </div>
+</div>

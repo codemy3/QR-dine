@@ -1,0 +1,233 @@
+/* Cart Page Wrapper */
+.cart-container {
+  max-width: 1200px;
+  margin: 100px auto 0; /* Added top margin to clear fixed navbar */
+  padding: 2rem 1rem;
+  font-family: 'Poppins', sans-serif;
+  /* Background is inherited from the body, no need to set it here */
+}
+
+/* Title */
+.cart-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: white; /* Use main text color */
+}
+
+/* Cart Items Grid */
+.cart-items {
+  display: grid;
+  gap: 1.25rem;
+}
+
+/* Individual Item Card */
+.cart-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--card); /* Use card background color */
+  border: 1px solid var(--ring); /* Use ring color for border */
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+  box-shadow: var(--shadow); /* Use theme shadow */
+  transition: transform 0.2s ease;
+}
+.cart-item:hover {
+  transform: translateY(-2px);
+}
+
+/* Product Image */
+.cart-item img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  margin-right: 1rem;
+}
+
+/* Product Details */
+.cart-item-details {
+  flex: 1;
+  min-width: 200px;
+}
+.cart-item-details h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--ink);
+}
+.cart-item-details p {
+  font-size: 0.9rem;
+  color: white; /* Use muted text color */
+}
+
+/* Quantity + Price + Remove */
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.cart-item-quantity button {
+  background: var(--ring); /* Use ring for subtle buttons */
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--ink);
+  font-weight: bold;
+  transition: background 0.2s ease;
+}
+.cart-item-quantity button:hover {
+  background: var(--brand); /* Use brand color on hover */
+}
+.cart-item-price {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+}
+.cart-item-remove {
+  color: white; /* Use muted color for less emphasis */
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+.cart-item-remove:hover {
+  color: var(--brand); /* Highlight with brand color on hover */
+}
+
+/* Cart Summary */
+.cart-summary {
+  margin-top: 2rem;
+  background: var(--card);
+  border: 1px solid var(--ring);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+.cart-summary h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--ink);
+}
+.cart-summary-total {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 1.25rem;
+}
+
+/* Checkout Button */
+.checkout-btn {
+  display: inline-block;
+  background-color: var(--brand); /* Use brand color for main CTA */
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+.checkout-btn:hover {
+  background-color: var(--brand-dark); /* Use darker brand color on hover */
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .cart-item-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+.confirm-btn {
+  background-color: var(--brand-dark);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.confirm-btn:hover {
+  background-color: var(--brand-dark)
+}
+
+/* Popup Backdrop */
+.popup-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Popup Box */
+.popup {
+  background:var(--card);
+  padding: 20px;
+  border-radius: 10px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.popup-actions {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.place-btn {
+  background: #4caf50;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.place-btn:hover {
+  background: #43a047;
+}
+
+.cancel-btn {
+  background: #aaa;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.cancel-btn:hover {
+  background: #888;
+}
+
+/* Success Message */
+.success-message {
+  margin-top: 20px;
+  color: green;
+  font-weight: bold;
+  text-align: center;
+}

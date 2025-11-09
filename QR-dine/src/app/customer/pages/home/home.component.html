@@ -1,0 +1,61 @@
+<div class="home-container">
+  
+  <div class="hero-container">
+    <div class="text-section">
+      <h1>Welcome to QR-Dine</h1>
+      <p>Scan, Order, and Enjoy your meal instantly</p>
+      <button (click)="onExploreMenu()">Explore Menu</button>
+    </div>
+
+    <div class="image-section">
+      <img 
+        [src]="foodImages[currentImageIndex]" 
+        alt="Delicious food"
+        [@zoomInOut]="animationState"
+      />
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <section class="category-section">
+    <h2>Categories</h2>
+    <div class="categories">
+      <div class="category-card"
+           *ngFor="let category of categories"
+           (click)="filterByCategory(category.name)">
+        <img [src]="category.image" [alt]="category.name" />
+        <p>{{ category.name }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+ <!-- PRODUCTS -->
+<section class="product-section">
+  <h2>Popular Dishes</h2>
+  
+  <!-- Loading Spinner -->
+  <div class="loading-container" *ngIf="isLoading">
+    <div class="spinner"></div>
+    <p>Loading menu...</p>
+  </div>
+  
+  <!-- Products Grid -->
+  <div class="products" *ngIf="!isLoading && filteredProducts.length > 0">
+    <div class="product-card" *ngFor="let product of filteredProducts">
+      <img [src]="product.imageUrl || product.image" [alt]="product.name" />
+      <h3>{{ product.name }}</h3>
+      <p class="price">₹{{ product.price }}</p>
+      <div class="product-actions">
+        <button class="btn-add" (click)="addToCart(product)">Add to Cart</button>
+        <button class="btn-go" (click)="goToCart()">Go to Cart</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Empty State -->
+  <div class="empty-state" *ngIf="!isLoading && filteredProducts.length === 0">
+    <p>No items available in this category</p>
+  </div>
+</section>
+</div>

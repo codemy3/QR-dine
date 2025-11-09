@@ -1,0 +1,53 @@
+.qr-card {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  width: 240px;
+  margin: 20px auto;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.qr-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.qr-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1e3a8a; /* Dark blue tone */
+  margin-bottom: 10px;
+}
+
+.qr-image {
+  width: 180px;
+  height: 180px;
+  border: 2px solid #1e3a8a;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.qr-loading {
+  font-size: 0.95rem;
+  color: #555;
+  font-style: italic;
+  margin: 20px 0;
+}
+
+.download-btn {
+  background-color: #1e3a8a;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.download-btn:hover {
+  background-color: #274bb5;
+}

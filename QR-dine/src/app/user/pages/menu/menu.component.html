@@ -1,0 +1,17 @@
+<div class="menu-container">
+  <h1>Our Menu</h1>
+
+  <div *ngIf="loading">Loading menu items...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div class="menu-grid" *ngIf="!loading && menuItems.length">
+    <div class="menu-card" *ngFor="let item of menuItems">
+      <img *ngIf="item.image" [src]="item.image" [alt]="item.name" class="menu-img" />
+      <h3>{{ item.name }}</h3>
+      <p>Category: {{ item.category }}</p>
+      <p>Price: ₹{{ item.price }}</p>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && !menuItems.length">No items available yet.</div>
+</div>

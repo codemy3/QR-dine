@@ -1,0 +1,22 @@
+
+/* styles.css */
+
+/* THEME VARIABLES */
+:root {
+  --brand: #FF7A00;           /* primary orange */
+  --brand-dark: #e66a00;
+  --ink: #fff;
+  --muted: #ccc;
+  --ring: #333;
+  --card: #1e1e1e;
+  --bg: linear-gradient(135deg, #0b0f14, #11151c, #1c1f26); /* gradient background */
+  --shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* OPTIONAL: apply background globally */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Poppins', Arial, sans-serif;
+}

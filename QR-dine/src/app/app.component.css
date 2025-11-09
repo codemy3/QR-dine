@@ -1,0 +1,49 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;                /* full width */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2f4156;
+  padding: 10px 20px;
+  z-index: 1000;               /* keep above other content */
+  box-sizing: border-box;
+}
+
+/* Logo area */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-img {
+  height: 32px;
+  width: 40px;
+}
+
+
+
+/* Navigation links */
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #c8d9e6;
+}
+
+.nav-links a.active {
+  font-weight: bold;
+  border-bottom: 2px solid #c8d9e6;
+}

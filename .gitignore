@@ -1,0 +1,13 @@
+# dependencies
+node_modules/
+qr-dine-backend/node_modules/
+
+# builds
+dist/
+build/
+
+# environment
+.env
+
+# logs
+*.log

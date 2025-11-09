@@ -1,0 +1,223 @@
+<div class="dashboard">
+  <!-- Header -->
+  <div class="dashboard-header">
+    <div class="logo-section">
+      <h1>QR-Dine Admin</h1>
+    </div>
+    <button class="btn-logout" (click)="logout()">Logout</button>
+  </div>
+
+  <!-- Navigation Tabs -->
+  <div class="nav-tabs">
+    <button 
+      [class.active]="currentPage === 'orders'" 
+      (click)="navigate('orders')"
+      class="tab-btn">
+      <span class="tab-icon">🔔</span>
+      Orders
+      <span class="badge" *ngIf="pendingOrders.length > 0">{{ pendingOrders.length }}</span>
+    </button>
+    
+    <button 
+      [class.active]="currentPage === 'history'" 
+      (click)="navigate('history')"
+      class="tab-btn">
+      <span class="tab-icon">📜</span>
+      Order History
+    </button>
+    
+    <button 
+      [class.active]="currentPage === 'manage'" 
+      (click)="navigate('manage')"
+      class="tab-btn">
+      <span class="tab-icon">🍽️</span>
+      Manage Menu
+    </button>
+  </div>
+
+  <!-- ========== ORDERS PAGE ========== -->
+  <div class="page-content" *ngIf="currentPage === 'orders'">
+    <h2 class="page-title">Pending Orders</h2>
+    
+    <div class="orders-container" *ngIf="pendingOrders.length > 0; else noOrders">
+      <div 
+        class="order-card" 
+        *ngFor="let order of pendingOrders"
+        [class.new-order]="order.isNewOrder">
+        
+        <div class="order-header">
+          <div class="table-info">
+            <span class="table-number">Table {{ order.tableNumber }}</span>
+            <span class="order-time">{{ order.createdAt | date:'short' }}</span>
+          </div>
+          <span class="new-badge" *ngIf="order.isNewOrder">NEW</span>
+        </div>
+
+        <div class="order-items">
+          <div class="item-row" *ngFor="let item of order.items">
+            <span class="item-name">{{ item.name }}</span>
+            <span class="item-qty">x{{ item.quantity }}</span>
+            <span class="item-price">₹{{ item.price * item.quantity }}</span>
+          </div>
+        </div>
+
+        <div class="order-total">
+          <strong>Total:</strong>
+          <span class="total-amount">₹{{ order.totalAmount }}</span>
+        </div>
+
+        <div class="order-actions">
+          <button class="btn-confirm" (click)="confirmOrder(order)">
+            ✓ Confirm
+          </button>
+          <button class="btn-cancel" (click)="cancelOrder(order)">
+            ✗ Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noOrders>
+      <div class="empty-state">
+        <div class="empty-icon">📭</div>
+        <p>No pending orders</p>
+      </div>
+    </ng-template>
+  </div>
+
+  <!-- ========== ORDER HISTORY PAGE ========== -->
+  <div class="page-content" *ngIf="currentPage === 'history'">
+    <h2 class="page-title">Order History</h2>
+    
+    <div class="history-container" *ngIf="orderHistory.length > 0; else noHistory">
+      <div class="history-card" *ngFor="let order of orderHistory">
+        <div class="history-header">
+          <div class="history-info">
+            <span class="table-number">Table {{ order.tableNumber }}</span>
+            <span class="order-time">{{ order.createdAt | date:'medium' }}</span>
+          </div>
+          <span 
+            class="status-badge" 
+            [class.confirmed]="order.status === 'confirmed'"
+            [class.cancelled]="order.status === 'cancelled'">
+            {{ order.status | uppercase }}
+          </span>
+        </div>
+
+        <div class="order-items">
+          <div class="item-row" *ngFor="let item of order.items">
+            <span class="item-name">{{ item.name }}</span>
+            <span class="item-qty">x{{ item.quantity }}</span>
+            <span class="item-price">₹{{ item.price * item.quantity }}</span>
+          </div>
+        </div>
+
+        <div class="order-total">
+          <strong>Total:</strong>
+          <span class="total-amount">₹{{ order.totalAmount }}</span>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noHistory>
+      <div class="empty-state">
+        <div class="empty-icon">📋</div>
+        <p>No order history yet</p>
+      </div>
+    </ng-template>
+  </div>
+
+  <!-- ========== MANAGE MENU PAGE ========== -->
+  <div class="page-content" *ngIf="currentPage === 'manage'">
+    <div class="manage-section">
+      <!-- Add Item Form -->
+      <div class="add-item-section">
+        <h2 class="section-title">Add New Menu Item</h2>
+        
+        <div class="form-container">
+          <div class="form-group">
+            <label>Category</label>
+            <select [(ngModel)]="newItem.category" class="form-control">
+              <option value="" disabled selected>Select Category</option>
+              <option value="Starters">Starters</option>
+              <option value="Main Course">Main Course</option>
+              <option value="Desserts">Desserts</option>
+              <option value="Beverages">Beverages</option>
+              <option value="Snacks">Snacks</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Item Name</label>
+            <input 
+              [(ngModel)]="newItem.name" 
+              placeholder="Enter item name" 
+              class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <label>Price (₹)</label>
+            <input 
+              [(ngModel)]="newItem.price" 
+              type="number" 
+              placeholder="0" 
+              class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <label>Description (Optional)</label>
+            <input 
+              [(ngModel)]="newItem.description" 
+              placeholder="Brief description" 
+              class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <label>Image</label>
+            <input 
+              type="file" 
+              (change)="onFileSelected($event)" 
+              accept="image/*"
+              class="form-control" />
+          </div>
+
+          <button class="btn-add-item" (click)="addItem()">
+            + Add Item
+          </button>
+        </div>
+      </div>
+
+      <!-- Menu Items List -->
+      <div class="menu-items-section">
+        <h2 class="section-title">Menu Items ({{ menuItems.length }})</h2>
+        
+        <div class="menu-grid" *ngIf="menuItems.length > 0; else noItems">
+          <div class="menu-card" *ngFor="let item of menuItems">
+            <img 
+              [src]="item.imageUrl || item.image || 'assets/placeholder.jpg'" 
+              [alt]="item.name"
+              class="menu-image" />
+            
+            <div class="menu-info">
+              <h4 class="menu-name">{{ item.name }}</h4>
+              <p class="menu-category">{{ item.category }}</p>
+              <p class="menu-price">₹{{ item.price }}</p>
+              <p class="menu-desc" *ngIf="item.description">{{ item.description }}</p>
+            </div>
+
+            <button class="btn-delete" (click)="deleteItem(item)">
+              🗑️ Delete
+            </button>
+          </div>
+        </div>
+
+        <ng-template #noItems>
+          <div class="empty-state">
+            <div class="empty-icon">🍽️</div>
+            <p>No menu items added yet</p>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

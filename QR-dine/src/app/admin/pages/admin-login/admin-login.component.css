@@ -1,0 +1,146 @@
+:root {
+  --bg-color: #f0f2f5;
+  --modal-bg: #fff;
+  --text-color: #333;
+  --input-bg: #fff;
+  --input-border: #ccc;
+  --btn-bg: #007bff;
+  --btn-text: #fff;
+  --btn-hover: #0056b3;
+  --error-color: #ff4d4d;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #121212;
+    --modal-bg: #1e1e1e;
+    --text-color: #eee;
+    --input-bg: #2a2a2a;
+    --input-border: #555;
+    --btn-bg: #3399ff;
+    --btn-text: #fff;
+    --btn-hover: #007acc;
+    --error-color: #ff6666;
+  }
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 10px;
+}
+
+.login-modal {
+  background-color: var(--modal-bg);
+  padding: 30px 35px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.login-modal h2 {
+  margin-bottom: 20px;
+  font-size: 1.6rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.form-group input {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--input-border);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  font-size: 14px;
+  transition: border 0.2s, background-color 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--btn-bg);
+}
+
+.password-group {
+  position: relative;
+}
+
+.toggle-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--btn-bg);
+  font-weight: 500;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 15px;
+  transition: background-color 0.2s;
+}
+
+.btn-login:hover {
+  background-color: var(--btn-hover);
+}
+
+.error-message {
+  color: var(--error-color);
+  margin-bottom: 10px;
+  font-size: 13px;
+  text-align: center;
+}
+
+@media screen and (max-width: 400px) {
+  .login-modal {
+    padding: 25px 20px;
+  }
+
+  .login-modal h2 {
+    font-size: 1.4rem;
+  }
+
+  .form-group input {
+    font-size: 13px;
+    padding: 9px;
+  }
+
+  .btn-login {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

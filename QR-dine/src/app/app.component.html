@@ -1,0 +1,16 @@
+<nav class="navbar">
+  <!-- Logo + Brand -->
+  <div class="logo">
+    <img src="assets/logo.png" alt="QR-Dine Logo" class="logo-img">
+   
+  </div>
+
+  <!-- Links -->
+  <div class="nav-links">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a routerLink="/cart" routerLinkActive="active">Cart</a>
+  </div>
+</nav>
+
+<!-- Routed components -->
+<router-outlet></router-outlet>
