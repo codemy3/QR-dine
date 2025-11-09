@@ -35,8 +35,7 @@ This project was developed as part of our academic group work to demonstrate ful
 ## 🛠️ Tech Stack
 
 **Frontend:**  
--  Next.js  
-- Tailwind CSS  
+Angular 
 
 **Backend:**  
 - Node.js  
