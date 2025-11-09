@@ -119,6 +119,11 @@ http://localhost:3000
 3. They place orders directly through the web app.  
 4. The backend manages the orders and updates their status.  
 5. Admins can monitor all tables, orders, and menus in real time.
+   <img width="1919" height="1026" alt="image" src="https://github.com/user-attachments/assets/1ab426cd-6685-426d-bc59-207c7f8d4a9e" />
+   <img width="1919" height="974" alt="image" src="https://github.com/user-attachments/assets/1a0f7ccc-18bb-416f-a9c8-56b792d9ab3f" />
+
+
+<img width="1914" height="1025" alt="image" src="https://github.com/user-attachments/assets/e54e9a61-59d6-4ddf-a690-45c2648f8355" />
 
 ---
 
